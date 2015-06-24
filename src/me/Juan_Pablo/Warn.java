@@ -1,9 +1,6 @@
 package me.Juan_Pablo;
 
-import static org.bukkit.ChatColor.BLUE;
-import static org.bukkit.ChatColor.GRAY;
-import static org.bukkit.ChatColor.RED;
-
+import static org.bukkit.ChatColor.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
