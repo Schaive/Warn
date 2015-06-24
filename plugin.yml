@@ -1,0 +1,15 @@
+name: Warn
+version: 1.0
+main: me.Juan_Pablo.Warn
+description: Warn players!
+ 
+commands:
+    warn:
+        usage: /<command> <player> <reason>
+        aliases: [w]
+        description: Warn a player.
+        
+permissions:
+    warn.player:
+        description: Allow To Warn Players
+        default: op
