@@ -1,6 +1,6 @@
 package me.Juan_Pablo;
 
-import static org.bukkit.ChatColor.RED;
+import static org.bukkit.ChatColor.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -35,7 +35,8 @@ public class Warn extends JavaPlugin implements Listener{
                        final Player target = Bukkit.getServer().getPlayer(args[0]);
                       
                        if (target == null) {
-                               sender.sendMessage(RED + "Could not find player " + args[0]);
+                               sender.sendMessage(String.format("%s[%sUMC %sWarning%s]%s Could not find player " + args[0], 
+                            		   GRAY,BLUE,RED,GRAY,RED));
                                return true;
                        }
                       
@@ -47,7 +48,7 @@ public class Warn extends JavaPlugin implements Listener{
                        Object level = this.getConfig().get(target.getName());
                       
                        if (level == null) {
-                               target.sendMessage(RED + msg);
+                               target.sendMessage(RED + "[Warning] " + msg);
                                this.getConfig().set(target.getName(), 1);
                                this.saveConfig();
                                return true;
@@ -58,14 +59,14 @@ public class Warn extends JavaPlugin implements Listener{
                        
                       
                        if (l == 2) {
-                               target.kickPlayer(RED + msg);
+                               target.kickPlayer(RED + "[Warning] " + msg);
                                this.getConfig().set(target.getName(), 2);
                                this.saveConfig();
                                return true;
                        }
                       
                        if (l == 3) {
-                               target.kickPlayer(RED + msg);
+                               target.kickPlayer(RED + "[Warning] " + msg);
                                target.setBanned(true);
                                this.getConfig().set(target.getName(), 3);
                                this.saveConfig();
@@ -81,7 +82,8 @@ public class Warn extends JavaPlugin implements Listener{
                        }
                }
                } else {
-            	   sender.sendMessage(RED + "You Don't Have Persion To Use This Command");
+            	   sender.sendMessage(String.format("%s[%sUMC %sWarning%s]%s You Don't Have Persion To Use This Command", 
+            			   GRAY,BLUE,RED,GRAY,RED));
                }
                return true;
        }
