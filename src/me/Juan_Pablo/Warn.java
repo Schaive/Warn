@@ -11,7 +11,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Warn extends JavaPlugin implements Listener {
 	
 	public void onEnable() {
-
 		if(getConfig() == null) {
 			saveDefaultConfig();
 		}		
