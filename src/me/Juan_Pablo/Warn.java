@@ -1,32 +1,36 @@
 package me.Juan_Pablo;
 
-import static org.bukkit.ChatColor.*;
+import static org.bukkit.ChatColor.BLUE;
+import static org.bukkit.ChatColor.GRAY;
+import static org.bukkit.ChatColor.RED;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Warn extends JavaPlugin implements Listener{
+public class Warn extends JavaPlugin implements Listener {
 	
 	public void onEnable() {
-		PluginManager pm = this.getServer().getPluginManager();
-		pm.addPermission(new Permissions().warn);
-		saveDefaultConfig();
+		
+		
+		if(getConfig() == null) {
+			saveDefaultConfig();
+		}
+		
+		
 	}
 	
 	public void onDisable() {
-		getServer().getPluginManager().removePermission(
-				new Permissions().warn);
+		saveConfig();
 	}
       
        @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
                if (cmd.getName().equalsIgnoreCase("warn")) {
-            	   if(sender.hasPermission(new Permissions().warn)) {
+            	   if(sender.hasPermission("Warn.warn")) {
                        if (args.length < 2) {
                                sender.sendMessage(RED + "/warn <player> <reason>");
                                return true;
@@ -39,6 +43,8 @@ public class Warn extends JavaPlugin implements Listener{
                             		   GRAY,BLUE,RED,GRAY,RED));
                                return true;
                        }
+                       
+                      
                       
                        String msg = "";
                        for (int i = 1; i < args.length; i++) {
